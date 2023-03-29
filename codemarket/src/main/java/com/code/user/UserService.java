@@ -1,8 +1,9 @@
 package com.code.user;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +17,50 @@ public class UserService {
 	private final UserMapper userMapper;
 	private final PasswordEncoder paswordEncoder;
 	
-	public List<UserVo> findAll() {
+	public List<UserDto> findAll() {
 		List<UserVo> userList = userMapper.findAll();
-		System.out.println(userList.toString());
-		return userList;
+		List<UserDto> collect = userList.stream().map(
+				m -> new UserDto(m)).collect(Collectors.toList());
+		return collect;
 	}
 	
-	public UserVo findByUsername(String username) {
-		UserVo user = userMapper.findByUsername(username);
-		return user;
+	public UserDto findByUsername(String username) {
+		Optional<UserVo> user = userMapper.findByUsername(username);
+		if(user.isEmpty()) {
+			return new UserDto();
+		}
+		return new UserDto(user.get());
 	}
 
 	public void save(UserDto userDto) {
-		UserVo user = new UserVo();
-		user.builder()
-			.username(userDto.getUsername())
-			.password(paswordEncoder.encode(userDto.getPassword()))
-			.build();
-		userMapper.save(user);
+		Optional<UserVo> check = userMapper.findByUsername(userDto.getUsername());
+		if(check.isEmpty()) {
+			UserVo user = UserVo.builder()
+					.username(userDto.getUsername())
+					.password(paswordEncoder.encode(userDto.getPassword()))
+					.nickname("")
+					.build();
+			userMapper.save(user);
+		}
 	}
+	
+	public void deleteUser(Long idx) {
+		userMapper.delete(idx);
+	}
+
+	public void upUser(Long id) {
+		UserVo user = userMapper.findById(id).get();
+		user.upRole();
+		userMapper.update(user);
+	}
+	
+	
+	public void downUser(Long id) {
+		UserVo user = userMapper.findById(id).get();
+		user.downRole();
+		userMapper.update(user);
+	}
+
+	
+
 }

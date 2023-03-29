@@ -10,6 +10,11 @@
 <body>
 	<div>메인페이지</div>
 	<div>
+		<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username"/>
+		</sec:authorize>
+	</div>
+	<div>
 		<sec:authorize access="isAnonymous()">
 			<a href="/user/login">로그인</a>
 		</sec:authorize>
@@ -21,7 +26,9 @@
 		<a href="/bubble">버블정렬</a>
 	</div>
 	<div>
-		<a href="/user">db확인</a>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="/user">유저 DB확인</a>
+		</sec:authorize>
 	</div>
 	<div>
 		<a href="/join">회원가입</a>
