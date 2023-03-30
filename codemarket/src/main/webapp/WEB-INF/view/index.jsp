@@ -23,7 +23,7 @@
 		</sec:authorize>
 	</div>
 	<div>
-		<a href="/bubble">버블정렬</a>
+		<a href="/join">회원가입</a>
 	</div>
 	<div>
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -31,7 +31,11 @@
 		</sec:authorize>
 	</div>
 	<div>
-		<a href="/join">회원가입</a>
+		<a href="/bubble">버블정렬</a>
 	</div>
+	<div>
+		<a href="/compress">문자열 압축</a>
+	</div>
+	
 </body>
 </html>

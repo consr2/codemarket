@@ -54,7 +54,6 @@ public class UserService {
 		userMapper.update(user);
 	}
 	
-	
 	public void downUser(Long id) {
 		UserVo user = userMapper.findById(id).get();
 		user.downRole();
