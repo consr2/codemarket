@@ -1,3 +1,6 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.security.SecureRandom"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,18 +28,26 @@
 		<div>로그인 정보 오류</div>
 	</c:if>
 	<div id="naver_id_login"></div>
+
 </body>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
-	var naver_id_login = new naver_id_login("G6iQ2lkHhAgaArT3rKrt","http://localhost:8080/user/login")
-	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("green", 1,40);
-  	naver_id_login.setDomain("http://localhost:8080/");
-  	naver_id_login.setState(state);
-  	naver_id_login.init_naver_id_login();
-  	naver_id_login.get_naver_userprofile("sendinfo()")
+	var url = document.location.href
+	var client_id = 'G6iQ2lkHhAgaArT3rKrt'
+	
+
+	var naver_id_login = new naver_id_login(client_id, url)
+	var state = naver_id_login.getUniqState()
+  	naver_id_login.setButton("green", 1,40)
+  	naver_id_login.setDomain("http://localhost:8080/")
+  	naver_id_login.setState(state)
+  	naver_id_login.init_naver_id_login()
+  	
+	if(url.length > 150){
+  		naver_id_login.get_naver_userprofile("sendinfo()")
+	}
   	
   	let id = document.querySelector('#username')
 	let pw = document.querySelector('#password')
@@ -55,11 +66,10 @@
 	  			id.value = naver_id_login.getProfileData('name') + 
 					naver_id_login.getProfileData('nickname')
 	  			pw.value = naver_id_login.getProfileData('id')
-	  			console.log('전송')
 	  			form.submit()
 	  		}
 	  	})
   	}
-	
+
 </script>
 </html>
