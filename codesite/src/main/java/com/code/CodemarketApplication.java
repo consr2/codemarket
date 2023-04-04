@@ -10,10 +10,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class CodemarketApplication extends SpringBootServletInitializer{
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(CodemarketApplication.class);
-	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CodemarketApplication.class, args);

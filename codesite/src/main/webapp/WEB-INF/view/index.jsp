@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./css/index.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div>메인페이지</div>
+	<div class="top">
+		<div class="title">메인페이지</div>
+	</div>
 	<div>
 		<sec:authorize access="isAuthenticated()">
 			<sec:authentication property="principal.username"/>

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.code'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.5-SNAPSHOT'
 sourceCompatibility = '17'
 
 configurations {
@@ -23,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '6.0.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
