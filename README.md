@@ -18,6 +18,11 @@ jsp 프레임워크 프로젝트
 <h4>현재 진행상황</h4>
 <p>3/26 - 버블정렬 페이지 작성</p>
 <p>3/31 - ec2등록 및 RDS등록 (http://3.36.7.192:8080/ 요금정책 확인 후 재등록) </p>
+<p>4/10 - html 무료 템플릿 적용</p>
+<img src="https://user-images.githubusercontent.com/110438208/230780762-61d31af6-c447-4080-924d-be63083f9fd0.png" width="300px" height="200px"/>
+<img src="https://user-images.githubusercontent.com/110438208/230780829-9202a358-6866-43a2-a70d-d9f30ce26662.png" width="300px" height="200px"/>
+<img src="https://user-images.githubusercontent.com/110438208/230780901-490280b6-2da2-4c24-94fd-fd0f825e7a61.png" width="300px" height="200px"/>
+
 ---------------------------------------------------
 <h4>얻은 지식 기록</h4>
 <p>1. boot 는 내장 톰캣을 사용한다.(나중에 빌드해서 서버에서 돌릴 때 편함)</p>
