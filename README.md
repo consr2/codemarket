@@ -11,7 +11,8 @@ jsp 프레임워크 프로젝트
 <br/>
 <h4>학습목표</h4>
 <p>1. mybatis, jsp 환경 습득</p>
-<p>2. oauth(naver인증못받아서 다른 계정은 불가...), security 적용</p>
+<p>2. oauth, security 적용</p>
+<p>&nbsp;&nbsp;&nbsp;ㄴnaver인증 못 받아서 다른 계정은 불가...</p>
 <p>3. aws 서버등록 및 파일 업로드(리눅스 환경)</p>
 <br/>
 <br/>
@@ -27,7 +28,7 @@ jsp 프레임워크 프로젝트
 <h4>얻은 지식 기록</h4>
 <p>1. boot 는 내장 톰캣을 사용한다.(나중에 빌드해서 서버에서 돌릴 때 편함)</p>
 <p>2. jsp파일을 사용하고 싶으면 war파일로 빌드해야한다.  </p>
-<pre>2-1. boot에서 gradle로 jsp를 작업을 하였다면 bootWar로 빌드하면 내장톰캣이면서 jsp사용가능  </pre>
+<pre>2-1. boot+gradle+jsp로 작업을 하였다면 bootWar로 빌드하면 내장톰캣이면서 jsp사용가능  </pre>
 <br/>
 <p>3. EC2 인바운드 설정을 열어줘야 http 접근 가능함  </p>
 <p>4. RDS 마찬가지로 인바운드 public 열어줘야하며 라우팅 또한열어줘야한다!!!</p>
