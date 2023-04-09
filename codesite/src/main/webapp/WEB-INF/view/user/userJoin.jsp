@@ -4,30 +4,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/">홈으로</a>
-	<form action="/join" method="POST" onsubmit="return submit1()" id="form">
-		<div>
-			<label>아이디</label>
-			<input type="text" name="username" value="" autocomplete="off" class="id">
-			<div class="error" style="display:none">에러출력</div>
-		</div>
-		<div>
-			<label>비밀번호</label>
-			<input type="password" name="password" value="" autocomplete="off" class="pw1">
-			<div class="error" style="display:none">에러출력</div>
-		<div>
-		</div>
-			<label>비밀번호 확인</label>
-			<input type="password" class="pw2" autocomplete="off" >
-			<div class="error" style="display:none">에러출력</div>
-		</div>
-		
-		<button type="submit" class="btn">회원가입</button>
-	</form>
+	<!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand my-auto" href="/">
+            <span class="">Code Site</span>
+        </a>
+    </nav>
+    <div class="container mt-4">
+    	<div class="col-6 mx-auto">
+			<form action="/join" method="POST" onsubmit="return submit1()" id="form" class="form-control">
+				<div>
+					<label class="form-label">아이디</label>
+					<input type="text" name="username" value="" autocomplete="off" class="id form-control">
+					<div class="error text-end" style="display:none">에러출력</div>
+				</div>
+				<div>
+					<label class="form-label pt-2">비밀번호</label>
+					<input type="password" name="password" value="" autocomplete="off" class="pw1 form-control">
+					<div class="error text-end" style="display:none">에러출력</div>
+				<div>
+				</div>
+					<label class="form-label pt-2">비밀번호 확인</label>
+					<input type="password" class="pw2 form-control" autocomplete="off">
+					<div class="error text-end" style="display:none">에러출력</div>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block text-light my-3">회원가입</button>
+			</form>
+    	</div>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">

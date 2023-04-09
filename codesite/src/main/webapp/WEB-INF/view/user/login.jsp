@@ -8,26 +8,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/">홈으로</a>
-	<form action="/user/login" method="POST" id="form">
-		<div>
-			<label>아이디</label>
-			<input name="username" id="username">
+ 	<!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand my-auto" href="/">
+            <span class="">Code Site</span>
+        </a>
+    </nav>
+	<div class="container mt-4">
+		<div class="col-6 mx-auto">
+			<form action="/user/login" method="POST" id="form" class="form-control">
+				<div>
+					<label class="form-label">아이디</label>
+					<input name="username" id="username" class="form-control">
+				</div>
+				<div>
+					<label class="form-label">비밀번호</label>
+					<input type="password" name="password" id="password" class="form-control">
+				</div>
+				<div class="d-flex">
+					<button type="submit" class="btn btn-primary btn-block text-light my-3">로그인</button>
+					<div class="m-3" id="naver_id_login"></div>
+				</div>
+			</form>
+			<c:if test="${param.error != null}">
+				<div class="text-danger">로그인 정보 오류</div>
+			</c:if>
 		</div>
-		<div>
-			<label>비밀번호</label>
-			<input type="password" name="password" id="password">
-		</div>
-		<button type="submit" >로그인</button>
-	</form>
-	<c:if test="${param.error != null}">
-		<div>로그인 정보 오류</div>
-	</c:if>
-	<div id="naver_id_login"></div>
+	</div>
 
 </body>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
