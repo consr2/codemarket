@@ -11,7 +11,7 @@ jsp 프레임워크 프로젝트
 <br/>
 <h4>학습목표</h4>
 <p>1. mybatis, jsp 환경 습득</p>
-<p>2. oauth, security 적용</p>
+<p>2. oauth(naver인증못받아서 다른 계정은 불가...), security 적용</p>
 <p>3. aws 서버등록 및 파일 업로드(리눅스 환경)</p>
 <br/>
 <br/>
