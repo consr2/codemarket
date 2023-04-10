@@ -24,7 +24,7 @@
     	<div class="col-7 mx-auto">
 		<form action="/bubble" method="POST" class="form-control">
 			<div>
-				<label class="form-label">숫자 입력 (ex 11,2,5,3,13)</label>
+				<label class="form-label">숫자 입력 (Ex. 11,2,5,3,13)</label>
 				<input name="value" class="form-control">
 				<button type="submit" class="btn btn-primary btn-block text-light my-3">정렬</button>
 			</div>

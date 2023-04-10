@@ -37,6 +37,11 @@ dependencies {
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
 	//mybatis
 	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.1'
+	//web socket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	//json-simple
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	
 }
 tasks.named('test') {
 	useJUnitPlatform()

@@ -120,15 +120,17 @@
                     <h2 class="mb-3">채팅</h2>
                     <div class="subheading mb-3">Web Socket 사용</div>
                     
-                    <div class="subheading mb-3">현재 접속자</div>
+                    <div class="subheading mb-3">
+                    	<a href="/room" class="text-decoration-none">채팅방 입장</a>
+                    </div>
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Mobile-First, Responsive Design
+                            작업중...
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Browser Testing & Debugging
+                            작업중...
                         </li>
                     </ul>
                 </div>
