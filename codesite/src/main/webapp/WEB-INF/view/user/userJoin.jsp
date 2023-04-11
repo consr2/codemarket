@@ -124,7 +124,6 @@
 	}
 	
 	function submit1(){
-		console.log("체크 시작")
 		var count = 0
 		error.forEach(e => {
 			if(e.value == 1) count++
