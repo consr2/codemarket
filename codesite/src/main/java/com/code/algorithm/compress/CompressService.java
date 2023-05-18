@@ -1,4 +1,4 @@
-package com.code.compress;
+package com.code.algorithm.compress;
 
 import org.springframework.stereotype.Service;
 

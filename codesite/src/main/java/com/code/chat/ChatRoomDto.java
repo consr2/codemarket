@@ -19,7 +19,7 @@ public class ChatRoomDto {
 	private String host;
 	private int maxMember;
 	private int currentMember;
-	private boolean deleteCheck;
+	private boolean deleteCheck; //삭제버튼 활성화 유무
 	
 	public ChatRoomDto(ChatRoomVo vo) {
 		this.idx = vo.getIdx();

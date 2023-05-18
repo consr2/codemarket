@@ -30,9 +30,9 @@ public class UserController {
 		return userService.findByUsername(username);
 	}
 	
-	@GetMapping("/join")
+	@GetMapping("/user/join")
 	public String getJoin() {
-		return "user/userJoin";
+		return "user/join";
 	}
 	
 	@PostMapping("/join")
@@ -54,28 +54,28 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/user")
+	@GetMapping("/user/list")
 	public String findAll(Model model) {
 		List<UserDto> user = userService.findAll();
 		model.addAttribute("userList", user);
-		return "user/userList";
+		return "user/list";
 	}
 	
 	@PostMapping("/user/{id}")
 	public String deleteUser(@PathVariable("id")Long id) {
 		System.out.println("받음" + id);
 		userService.deleteUser(id);
-		return "redirect:/user";
+		return "redirect:/user/list";
 	}
 	
 	@PostMapping("/user/up/{id}")
 	public String upUser(@PathVariable("id")Long id) {
 		userService.upUser(id);
-		return "redirect:/user";
+		return "redirect:/user/list";
 	}
 	@PostMapping("/user/down/{id}")
 	public String downUser(@PathVariable("id")Long id) {
 		userService.downUser(id);
-		return "redirect:/user";
+		return "redirect:/user/list";
 	}
 }

@@ -1,14 +1,13 @@
-package com.code.index;
+package com.code.map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
-
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
+public class MapController {
 	
+	@RequestMapping("/map")
+	public String map() {
+		return "map/map";
+	}
 }

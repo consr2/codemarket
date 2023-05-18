@@ -3,14 +3,15 @@ package com.code.chat;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ChatService {
@@ -42,7 +43,7 @@ public class ChatService {
 				.host(principal.getName())
 				.maxMember(room.getMaxMember())
 				.build();
-		System.out.println("DB 저장값 : " + vo.toString());
+		log.info("DB 저장값 : " + vo.toString());
 		chatMapper.save(vo);
 	}
 	

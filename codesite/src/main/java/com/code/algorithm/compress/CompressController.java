@@ -1,4 +1,4 @@
-package com.code.compress;
+package com.code.algorithm.compress;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +13,12 @@ public class CompressController {
 
 	private final CompressService compressService;
 	
-	@GetMapping("/compress")
+	@GetMapping("/algorithm/compress")
 	public String compress() {
-		return "compress/compress";
+		return "algorithm/compress";
 	}
 	
-	@PostMapping("/compress")
+	@PostMapping("/algorithm/compress")
 	public String compress(String str, Model model) {
 		String result = compressService.compressString(str);
 		String msg = compressService.compressMessage(str);
@@ -26,6 +26,6 @@ public class CompressController {
 		model.addAttribute("msg", msg);
 		model.addAttribute("str", str);
 		model.addAttribute("result", result);
-		return "compress/compress";
+		return "algorithm/compress";
 	}
 }

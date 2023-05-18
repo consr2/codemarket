@@ -30,5 +30,16 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+    
+    $.ajax({
+		type : 'GET',
+		url  : '/api/v1/chatroomList',
+		success : function(data){
+			var size = data.data.length > 3 ? 3 : data.data.length
+			for(var i=0; i < size; i++){
+				$('#roomList').append('<li><a href=\"/chat/' + data.data[i].idx + '\"> >'+ data.data[i].roomName + 'ㅤ' + data.data[i].currentMember + '/' + data.data[i].maxMember +'</a></li>')
+			}
+		}
+	})
 
 });

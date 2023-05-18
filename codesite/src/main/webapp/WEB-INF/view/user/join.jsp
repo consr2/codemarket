@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <body>
 	<!-- Navigation-->

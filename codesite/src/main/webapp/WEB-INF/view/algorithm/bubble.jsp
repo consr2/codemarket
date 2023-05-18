@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,23 +22,32 @@
     </nav>
     <div class="container mt-4">
     	<div class="col-7 mx-auto">
-			<form action="/compress" method="POST" class="form-control">
-				<div>
-					<label class="form-label">글자 입력 (Ex. aabbaaac)</label>
-					<input name="str" class="form-control">
-				</div>
+		<form action="/algorithm/bubble" method="POST" class="form-control">
+			<div>
+				<label class="form-label">숫자 입력 (Ex. 11,2,5,3,13)</label>
+				<input name="value" class="form-control">
 				<button type="submit" class="btn btn-primary btn-block text-light my-3">정렬</button>
-			</form >
-			<p>입력값 : 
-				<c:out value="{ ${ str } }"></c:out>
-			</p>
-			<p>출력값 : 
-				<c:out value="{ ${ result } }"></c:out>
-			</p>
-			<p>메시지 : 
-				<c:out value="${ msg }"></c:out>
-			</p>
+			</div>
+		</form >
+		<p>입력값 : 
+			<c:out value="{ ${ value } }"></c:out>
+		</p>
+		<p>출력값 : 
+			{
+			<c:forEach var="i" items="${sort}" varStatus="status">
+				<c:if test="${fn:length(sort) > status.count }">
+					<c:out value="${i},"></c:out>
+				</c:if>
+				<c:if test="${fn:length(sort) == status.count }">
+					<c:out value="${i}"></c:out>
+				</c:if>
+			</c:forEach>
+			}
+		</p>
+		<p>메시지 : 
+			<c:out value="${ message }"></c:out>
+		</p>
 		</div>
-    </div>
+	</div>
 </body>
 </html>

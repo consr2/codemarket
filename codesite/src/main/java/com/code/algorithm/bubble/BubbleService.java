@@ -1,4 +1,4 @@
-package com.code.bubble;
+package com.code.algorithm.bubble;
 
 import org.springframework.stereotype.Service;
 

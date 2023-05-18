@@ -13,12 +13,15 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class WebSocketHandler extends TextWebSocketHandler{
 
 	private List<ChatSession> sessionList = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트
 	
-	@Override
+	@Override //메시지 받으면 뿌려줌
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
 		//메시지 발송
 		String msg = message.getPayload();
@@ -39,12 +42,12 @@ public class WebSocketHandler extends TextWebSocketHandler{
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override
+	@Override //최초 소켓 생성
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//리스트에 추가
 		super.afterConnectionEstablished(session);
 		sessionList.add(new ChatSession(session));
-
+		log.info("소켓 생성 : " + session.toString());
 		//소켓 연결
 		JSONObject obj = new JSONObject();
 		obj.put("type", "session");
@@ -52,10 +55,11 @@ public class WebSocketHandler extends TextWebSocketHandler{
 		session.sendMessage(new TextMessage(obj.toJSONString()));
 	}
 	
-	@Override
+	@Override // 소켓 종료
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		//소켓 종료
 		ChatSession cs = new ChatSession(session);
+		log.info("소켓 종료 : " + session.toString());
 		for(int i=0; i<sessionList.size(); i++) {
 			if(sessionList.get(i).equals(cs)) {
 				sessionList.remove(i);

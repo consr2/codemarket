@@ -1,4 +1,4 @@
-package com.code.bubble;
+package com.code.algorithm.bubble;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +14,12 @@ public class BubbleController {
 	private final BubbleService bubbleService;
 	
 	
-	@GetMapping("/bubble")
+	@GetMapping("/algorithm/bubble")
 	public String bubble() {
-		return "bubble/bubble";
+		return "algorithm/bubble";
 	}
 	
-	@PostMapping("/bubble")
+	@PostMapping("/algorithm/bubble")
 	public String bubblesort(String value, Model model) {
 		String message = bubbleService.valueCheck(value);
 		Integer[] sort	= bubbleService.sortInt(value, message);
@@ -27,7 +27,7 @@ public class BubbleController {
 		model.addAttribute("value", value);
 		model.addAttribute("sort", sort);
 		model.addAttribute("message", message);
-		return "bubble/bubble";
+		return "algorithm/bubble";
 	}
 	
 	
