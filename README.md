@@ -18,7 +18,7 @@ jsp 프레임워크 프로젝트
 <br/>
 <h4>현재 진행상황</h4>
 <p>3/26 - 버블정렬 페이지 작성</p>
-<p>3/31 - ec2등록 및 RDS등록 (http://3.36.7.192:8080/ 요금정책 확인 후 재등록) </p>
+<p>3/31 - ec2등록 및 RDS등록 (http://3.36.7.192) 요금정책 확인 후 재등록) </p>
 <p>4/10 - html 무료 템플릿 적용</p>
 <img src="https://user-images.githubusercontent.com/110438208/230780762-61d31af6-c447-4080-924d-be63083f9fd0.png" width="500px" height="300px"/>
 <img src="https://user-images.githubusercontent.com/110438208/230780829-9202a358-6866-43a2-a70d-d9f30ce26662.png" width="500px" height="300px"/>
