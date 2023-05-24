@@ -30,8 +30,8 @@ public interface UserMapper {
 	void delete(@Param("idx")Long idx);
 
 	@Update("update users set role = #{user.role} where idx = #{user.idx}")
-	void update(@Param("user")UserVo user);
+	void updateRole(@Param("user")UserVo user);
 	
-	
+	void updateNickname(UserVo userVo);
 
 }

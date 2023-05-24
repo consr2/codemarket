@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.code.security.UserExtend;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -51,13 +53,17 @@ public class UserService {
 	public void upUser(Long id) {
 		UserVo user = userMapper.findById(id).get();
 		user.upRole();
-		userMapper.update(user);
+		userMapper.updateRole(user);
 	}
 	
 	public void downUser(Long id) {
 		UserVo user = userMapper.findById(id).get();
 		user.downRole();
-		userMapper.update(user);
+		userMapper.updateRole(user);
+	}
+
+	public void updateUser(UserVo userVo) {
+		userMapper.updateNickname(userVo);
 	}
 
 	

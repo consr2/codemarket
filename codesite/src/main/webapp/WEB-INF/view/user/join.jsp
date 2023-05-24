@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
-<title>회원가입</title>
+	<title>회원가입</title>
 </head>
 <body>
 	<!-- Navigation-->
@@ -31,8 +30,8 @@
 					<label class="form-label pt-2">비밀번호</label>
 					<input type="password" name="password" value="" autocomplete="off" class="pw1 form-control">
 					<div class="error text-end" style="display:none">에러출력</div>
-				<div>
 				</div>
+				<div>
 					<label class="form-label pt-2">비밀번호 확인</label>
 					<input type="password" class="pw2 form-control" autocomplete="off">
 					<div class="error text-end" style="display:none">에러출력</div>

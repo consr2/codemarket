@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserSecurityService implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService{
 
 	private final UserMapper userMapper;
 	
@@ -36,7 +36,7 @@ public class UserSecurityService implements UserDetailsService{
 		authorities.add(new SimpleGrantedAuthority(
 				UserRole.valueOf(role).getValue()));
 		
-		return new User(user.getUsername(),user.getPassword(), authorities);
+		return new UserExtend(user, authorities);
 	}
 
 }

@@ -60,10 +60,13 @@
                    		</sec:authorize>
                    		<sec:authorize access="isAuthenticated()">
                    			<li>
-                   				<sec:authentication property="principal.Username"/>님!
+                   				<sec:authentication property="principal.nickname"/>님!
                    			</li>
                    			<li>
 		                    	<a href="/user/logout" class="text-decoration-none">> 로그아웃</a>
+		                    </li>
+		                    <li>
+		                    	<a href="/user/custom" class="text-decoration-none">> 회원정보수정</a>
 		                    </li>
                    		</sec:authorize>
                    		<sec:authorize access="hasRole('ROLE_ADMIN')">
