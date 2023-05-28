@@ -1,6 +1,7 @@
 package com.code.user;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -10,15 +11,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.code.error.NaverError;
 import com.code.security.UserExtend;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-
+	
 	private final UserService userService;
+	private final NaverLoginService naverLoginService;
 	
 	@GetMapping("/api/user")
 	@ResponseBody
@@ -38,15 +42,19 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/login")
-	public String login() {
+	public String login(Model model) {
+		model.addAttribute("client_id", naverLoginService.getClient_id());
 		return "user/login";
 	}
 	
-	@PostMapping("/user/login/naver")
-	@ResponseBody
-	public String naverLogin(UserDto userDto) {
+	@GetMapping("/user/login/naver")
+	public String naverLogin(HttpServletRequest request, Model model) throws NaverError{
+		Map<String, Object> tokenMap = naverLoginService.getToken(request);
+		Map<String, Object> userInfoMap = naverLoginService.getUserInfo(tokenMap);
+		UserDto userDto = naverLoginService.getUserDto(userInfoMap);
 		userService.save(userDto);
-		return "1";
+		model.addAttribute("data",userDto);
+		return "user/popup";
 	}
 	
 	

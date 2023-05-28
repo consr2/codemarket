@@ -36,7 +36,9 @@
 				</div>
 				<div class="d-flex">
 					<button type="submit" class="btn btn-primary btn-block text-light my-3">로그인</button>
-					<div class="m-3" id="naver_id_login"></div>
+					<div class="m-3" id="naverIdLogin">
+						<img src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1" style="height: 40px"/>
+					</div>
 				</div>
 			</form>
 			<c:if test="${param.error != null}">
@@ -45,47 +47,48 @@
 		</div>
 	</div>
 
+	<input id="client_id" value="${client_id}" hidden>
 </body>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
-	var url = document.location.href
-	var client_id = 'G6iQ2lkHhAgaArT3rKrt'
+	var url = window.location.protocol + "//" + window.location.host;
+	var client_id = $('#client_id').val();
+	var randomNum = Math.random() * 10000;
+	var redirect_uri = url + '/user/login/naver';
 	
-
-	var naver_id_login = new naver_id_login(client_id, url)
-	var state = naver_id_login.getUniqState()
-  	naver_id_login.setButton("green", 1,40)
-  	naver_id_login.setDomain("http://localhost:8080/")
-  	naver_id_login.setState(state)
-  	naver_id_login.init_naver_id_login()
-  	
-	if(url.length > 150){
-  		naver_id_login.get_naver_userprofile("sendinfo()")
+	let popup = null
+	
+	$('#naverIdLogin').click(naverPop);
+	function naverPop(){
+		popup = window.open("https://nid.naver.com/oauth2.0/authorize?response_type=code" +
+						"&client_id=" + client_id +
+						"&state=" + randomNum +
+						"&redirect_uri=" + redirect_uri
+					,"네이버"
+					,"width=400,height=400");
 	}
-  	
-  	let id = document.querySelector('#username')
-	let pw = document.querySelector('#password')
-	let form = document.querySelector('#form')
-  	
-  	function sendinfo(){
-	  	$.ajax({
-	  		url : '/user/login/naver',
-	  		type : 'POST',
-	  		data : {
-	  			'username' : naver_id_login.getProfileData('name') + 
-	  						naver_id_login.getProfileData('nickname'),
-	  		  	'password' : naver_id_login.getProfileData('id'),
-	  		},
-	  		success : function(e){
-	  			id.value = naver_id_login.getProfileData('name') + 
-					naver_id_login.getProfileData('nickname')
-	  			pw.value = naver_id_login.getProfileData('id')
-	  			form.submit()
-	  		}
-	  	})
-  	}
-
+	
+	function closePop(data){
+		popup.close();
+		console.log(data);
+		data = data.replace(/^[^\(]+\(|\)/g , '');
+		var json = JSON.parse('{' + data.replace(/([\wㄱ-ㅎㅏ-ㅣ가-힣]+)=([\wㄱ-ㅎㅏ-ㅣ가-힣]+)/g, '"$1":"$2"') + '}');
+		
+		$.ajax({
+			url: "/user/login"
+			,type: "POST"
+			,data: json
+			,success: function(res){
+				window.location.href = "/";
+			}
+			,error: function(xhr, state, error){
+				console.log('실패')
+				console.log(error)
+			}
+		})
+	}
+	
+	
 </script>
 </html>
