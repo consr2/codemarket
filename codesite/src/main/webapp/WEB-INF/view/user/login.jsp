@@ -71,14 +71,14 @@
 	
 	function closePop(data){
 		popup.close();
-		console.log(data);
 		data = data.replace(/^[^\(]+\(|\)/g , '');
-		var json = JSON.parse('{' + data.replace(/([\wㄱ-ㅎㅏ-ㅣ가-힣]+)=([\wㄱ-ㅎㅏ-ㅣ가-힣]+)/g, '"$1":"$2"') + '}');
+		var loginUserData = JSON.parse('{' + data.replace(/([\wㄱ-ㅎㅏ-ㅣ가-힣]+)=([\wㄱ-ㅎㅏ-ㅣ가-힣]+)/g, '"$1":"$2"') + '}');
+		console.log(loginUserData);
 		
 		$.ajax({
 			url: "/user/login"
 			,type: "POST"
-			,data: json
+			,data: loginUserData
 			,success: function(res){
 				window.location.href = "/";
 			}

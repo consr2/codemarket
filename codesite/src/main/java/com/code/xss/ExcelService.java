@@ -1,8 +1,8 @@
 package com.code.xss;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -13,14 +13,15 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Service
 public class ExcelService {
 
-	private String filePath = "../../../excel";
 	private String fileNm = "test";
 	private String fileExtension = ".xlsx";
 	
-	public void createXSS() {
+	public void createXSS(HttpServletResponse response) {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
 		XSSFSheet sheet = workbook.createSheet("빈 시트지");
@@ -45,31 +46,26 @@ public class ExcelService {
             int cellnum = 0;
             for (Object obj : objArr) {
                 Cell cell = row.createCell(cellnum++);
-                if (obj instanceof String) {
-                    cell.setCellValue((String)obj);
-                } else if (obj instanceof Integer) {
-                    cell.setCellValue((Integer)obj);
-                }
+                cell.setCellValue((String)obj);
+                sheet.autoSizeColumn(cellnum);//열 크기 자동 조절
             }
+             
         }
         
-        // 폴더를 생성할 경로를 File 객체로 생성
-        File folder = new File(filePath);
-        folder.mkdirs();
-        
-        //파일 이름 중복방지
-        File file = new File(filePath, fileNm + fileExtension);
-        int count = 1;
-        while(file.exists()) {
-        	file = new File(filePath, fileNm + count + fileExtension);
-        	count++;
-        }
-	
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            workbook.write(out);
+        //엑셀 다운로드 시키기
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            workbook.write(outputStream);
+
+            byte[] excelBytes = outputStream.toByteArray();
+
+            response.setContentType("application/vnd.ms-excel");
+            response.setHeader("Content-disposition", "attachment; filename=" + fileNm + fileExtension);
+            response.getOutputStream().write(excelBytes);//버퍼에 데이터 장전
+            response.getOutputStream().flush();//버퍼의 데이터 발사
+           
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+      
 	}
 }

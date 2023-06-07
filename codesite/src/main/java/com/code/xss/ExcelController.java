@@ -3,6 +3,7 @@ package com.code.xss;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -13,9 +14,7 @@ public class ExcelController {
 	
 	
 	@RequestMapping("/xss")
-	public String createXSS() {
-		System.out.println("발송!");
-		excelService.createXSS();
-		return "redirect: ";
+	public void createXSS(HttpServletResponse response) {
+		excelService.createXSS(response);
 	}
 }
