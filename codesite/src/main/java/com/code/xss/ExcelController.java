@@ -13,8 +13,9 @@ public class ExcelController {
 	private final ExcelService excelService;
 	
 	
-	@RequestMapping("/xss")
+	@RequestMapping("/excel")
 	public void createXSS(HttpServletResponse response) {
 		excelService.createXSS(response);
+		System.out.println("엑셀 다운로드");
 	}
 }

@@ -43,3 +43,8 @@ window.addEventListener('DOMContentLoaded', event => {
 	})
 
 });
+
+$('#xlstest').on('click',function(){
+	
+	location.href='/excel'
+})

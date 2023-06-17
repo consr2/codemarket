@@ -58,7 +58,7 @@ public class ExcelService {
 
             byte[] excelBytes = outputStream.toByteArray();
 
-            response.setContentType("application/vnd.ms-excel");
+            response.setContentType("application/vnd.ms-excel; charset=UTF-8;");
             response.setHeader("Content-disposition", "attachment; filename=" + fileNm + fileExtension);
             response.getOutputStream().write(excelBytes);//버퍼에 데이터 장전
             response.getOutputStream().flush();//버퍼의 데이터 발사

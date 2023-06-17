@@ -9,7 +9,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>CodeSite</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -112,6 +111,7 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-3">제목</h3>
                             <div>본문</div>
+                            <div id="xlstest">엑셀 다운로드</div>
                         </div>
                         <div class="flex-shrink-0"><span class="badge bg-primary">작성일</span></div>
                     </div>
