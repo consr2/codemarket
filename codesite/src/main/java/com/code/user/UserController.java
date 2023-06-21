@@ -96,4 +96,12 @@ public class UserController {
 		model.addAttribute("user", userVo);
 		return "user/custom";
 	}
+	
+	
+	@GetMapping("/user/transactionTest")
+	public void transactionTest() {
+		userService.transactionTest();
+	}
+	
+	
 }

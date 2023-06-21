@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.code.security.UserExtend;
 
@@ -34,7 +35,8 @@ public class UserService {
 		return new UserDto(user.get());
 	}
 
-	public void save(UserDto userDto) {
+	
+	public String save(UserDto userDto) {
 		Optional<UserVo> check = userMapper.findByUsername(userDto.getUsername());
 		if(check.isEmpty()) {
 			UserVo user = UserVo.builder()
@@ -43,6 +45,9 @@ public class UserService {
 					.nickname("")
 					.build();
 			userMapper.save(user);
+			return "가입완료";
+		}else {
+			return "중복입니다";
 		}
 	}
 	
@@ -66,6 +71,13 @@ public class UserService {
 		userMapper.updateNickname(userVo);
 	}
 
-	
+	@Transactional
+	public void transactionTest() {
+		UserVo user = new UserVo("test","asdf","");
+	    userMapper.save(user);
+	    
+	    UserVo user1 = new UserVo("test","asdf","");
+	    userMapper.save(user1);
+	}
 
 }

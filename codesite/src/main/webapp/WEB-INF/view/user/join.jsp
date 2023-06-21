@@ -111,7 +111,7 @@
 					error[0].innerHTML='이미 존재하는 아이디입니다.'
 					error[0].style.display='block'
 					error[0].style.color='red'
-					error[0].value = 0
+					error[0].value = 1
 				}else{
 					error[0].innerHTML='사용가능한 아이디입니다.'
 					error[0].style.display='block'
