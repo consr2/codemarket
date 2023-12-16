@@ -6,6 +6,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -29,8 +31,14 @@ public class SecurityConfig {
 			.logout()
 			.logoutUrl("/user/logout")
 			.logoutSuccessUrl("/")
-			.invalidateHttpSession(true);
-		
+			.invalidateHttpSession(true)
+		.and()
+			.sessionManagement(
+				s -> s
+				.maximumSessions(1)
+				.maxSessionsPreventsLogin(false)
+				.expiredUrl("/")
+			);
 		return http.build();
 	}
 	
@@ -44,5 +52,8 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 	
-	
+	@Bean
+	public SessionRegistry sessionRegistry() {
+		return new SessionRegistryImpl();
+	}
 }
